@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_main_menu">
+
+    <fragment
+        android:id="@+id/navigation_main_menu"
+        android:name="com.example.foodtest.ui.home.MainMenuFragment"
+        android:label="@string/title_main_menu"
+        tools:layout="@layout/fragment_main_menu" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.foodtest.ui.dashboard.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_basket"
+        android:name="com.example.foodtest.ui.notifications.BasketFragment"
+        android:label="@string/title_basket"
+        tools:layout="@layout/fragment_basket" />
+</navigation>

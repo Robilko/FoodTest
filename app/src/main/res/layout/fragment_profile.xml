@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.notifications.BasketFragment">
+
+    <ImageView
+        android:src="@drawable/under_construction"
+        android:layout_width="@dimen/plug_image_size"
+        android:layout_height="@dimen/plug_image_size" />
+
+    <TextView
+        style="@style/PlugTextStyle"
+        android:text="@string/title_profile"/>
+</LinearLayout>

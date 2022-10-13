@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name" translatable="false">FoodTest</string>
+    <string name="title_main_menu">Menu</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_basket">Basket</string>
+</resources>
