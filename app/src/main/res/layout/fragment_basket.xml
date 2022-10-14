@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ui.notifications.BasketFragment">
+    android:orientation="vertical"
+    tools:context=".ui.fragment.BasketFragment">
 
     <ImageView
-        android:src="@drawable/under_construction"
         android:layout_width="@dimen/plug_image_size"
-        android:layout_height="@dimen/plug_image_size" />
+        android:layout_height="@dimen/plug_image_size"
+        android:src="@drawable/under_construction" />
 
     <TextView
         style="@style/PlugTextStyle"
-        android:text="@string/title_basket"/>
+        android:text="@string/title_basket" />
 </LinearLayout>

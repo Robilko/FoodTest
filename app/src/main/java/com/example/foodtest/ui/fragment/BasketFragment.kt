@@ -1,16 +1,15 @@
-package com.example.foodtest.ui.home
+package com.example.foodtest.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.foodtest.databinding.FragmentMainMenuBinding
+import com.example.foodtest.databinding.FragmentBasketBinding
 
-class MainMenuFragment : Fragment() {
+class BasketFragment : Fragment() {
 
-    private var _binding: FragmentMainMenuBinding? = null
+    private var _binding: FragmentBasketBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,9 +17,7 @@ class MainMenuFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
-            ViewModelProvider(this)[MainMenuViewModel::class.java]
-        _binding = FragmentMainMenuBinding.inflate(inflater, container, false)
+        _binding = FragmentBasketBinding.inflate(inflater, container, false)
         return binding.root
     }
 

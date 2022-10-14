@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_main_menu"
-        android:name="com.example.foodtest.ui.home.MainMenuFragment"
+        android:name="com.example.foodtest.ui.fragment.MainMenuFragment"
         android:label="@string/title_main_menu"
         tools:layout="@layout/fragment_main_menu" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.foodtest.ui.dashboard.ProfileFragment"
+        android:name="com.example.foodtest.ui.fragment.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_basket"
-        android:name="com.example.foodtest.ui.notifications.BasketFragment"
+        android:name="com.example.foodtest.ui.fragment.BasketFragment"
         android:label="@string/title_basket"
         tools:layout="@layout/fragment_basket" />
 </navigation>

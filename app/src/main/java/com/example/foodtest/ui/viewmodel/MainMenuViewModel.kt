@@ -1,4 +1,4 @@
-package com.example.foodtest.ui.home
+package com.example.foodtest.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 
