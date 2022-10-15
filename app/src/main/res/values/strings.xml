@@ -1,6 +1,27 @@
 <resources>
     <string name="app_name" translatable="false">FoodTest</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="under_construction" translatable="false">Under construction</string>
+
+    <!--Examples for develop-->
+    <string name="example_food_item_header_text" translatable="false">Ветчина и грибы</string>
+    <string name="example_food_item_description_text" translatable="false">Ветчина, шампиньоны, увеличенная порция моцареллы, томатный соус, пепперони, острая черизо</string>
+    <string name="example_food_card_order_btn_text" translatable="false">от 345 р.</string>
+
+    <!--Main fragment-->
     <string name="title_main_menu">Menu</string>
     <string name="title_profile">Profile</string>
     <string name="title_basket">Basket</string>
+    <string name="main_menu_current_city">Moscow</string>
+    <string name="qr_scan" translatable="false">QR-scan</string>
+
+    <!--    Categories-->
+    <string name="category_name_burgers">Burgers</string>
+    <string name="category_name_pizzas">Pizzas</string>
+    <string name="category_name_sausages">Sausages</string>
+    <string name="category_name_steaks">Steaks</string>
+    <string name="category_name_sandwiches">Sandwiches</string>
+    <string name="category_name_desserts">Desserts</string>
+    <string name="category_name_drinks">Drinks</string>
+    <string name="network_connecion_not_available">Network connecion not available now !</string>
 </resources>

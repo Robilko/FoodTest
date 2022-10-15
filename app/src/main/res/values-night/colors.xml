@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="appPrimary">#CD7D7D</color>
+    <color name="appPrimaryVariant">#BC6B6B</color>
+    <color name="appBarBackground">#191818</color>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.foodtest.ui.dashboard
+package com.example.foodtest.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

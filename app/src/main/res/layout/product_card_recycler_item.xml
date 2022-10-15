@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_8">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/product_item_image"
+        android:layout_width="@dimen/food_card_image_size"
+        android:layout_height="@dimen/food_card_image_size"
+        android:scaleType="centerCrop"
+        android:src="@drawable/example_food_card_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/product_item_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/product_item_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/example_food_item_header_text" />
+
+    <TextView
+        android:id="@+id/product_item_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:maxLines="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/product_item_image"
+        app:layout_constraintTop_toBottomOf="@+id/product_item_header"
+        tools:text="@string/example_food_item_description_text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/product_order_button"
+        android:layout_width="@dimen/food_card_btn_width"
+        android:layout_height="@dimen/food_card_btn_height"
+        android:layout_margin="@dimen/margin_8"
+        android:autoSizeMaxTextSize="@dimen/food_card_btn_max_txt_size"
+        android:autoSizeMinTextSize="@dimen/food_card_btn_min_txt_size"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/appBarBackground"
+        android:textColor="?attr/colorPrimaryVariant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_item_description"
+        app:strokeColor="?attr/colorPrimaryVariant"
+        app:strokeWidth="1dp"
+        tools:text="@string/example_food_card_order_btn_text" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_16"
+        android:background="?attr/colorPrimaryVariant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_item_image" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
