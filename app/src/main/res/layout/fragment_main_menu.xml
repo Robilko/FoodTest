@@ -23,7 +23,7 @@
 
             <include
                 android:id="@+id/banners_layout"
-                layout="@layout/banners_layout"
+                layout="@layout/layout_banners"
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
@@ -61,7 +61,7 @@
 
     <include
         android:id="@+id/chips_group"
-        layout="@layout/category_buttons_layout"
+        layout="@layout/layout_category_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
