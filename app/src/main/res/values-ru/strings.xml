@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="unknown_error">Неизвестная ошибка</string>
+
+    <!--Main fragment-->
     <string name="title_main_menu">Меню</string>
     <string name="title_profile">Профиль</string>
     <string name="title_basket">Корзина</string>
-    <string name="example_current_city">Москва</string>
+    <string name="main_menu_current_city">Москва</string>
+
+    <!--    Categories-->
+    <string name="category_name_burgers">Бургеры</string>
+    <string name="category_name_pizzas">Пицца</string>
+    <string name="category_name_sausages">Сосиски</string>
+    <string name="category_name_steaks">Стейки</string>
+    <string name="category_name_sandwiches">Сэндвичи</string>
+    <string name="category_name_desserts">Дессерты</string>
+    <string name="category_name_drinks">Напитки</string>
+
 </resources>

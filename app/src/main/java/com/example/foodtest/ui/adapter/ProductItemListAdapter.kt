@@ -8,25 +8,31 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodtest.R
 import com.example.foodtest.databinding.ProductCardRecyclerItemBinding
-import com.example.foodtest.ui.model.ProductItemPlug
+import com.example.foodtest.ui.adapter.listeners.RecyclerProductItemListener
+import com.example.foodtest.ui.model.ProductItem
 
-class ProductItemListAdapter :
+class ProductItemListAdapter(private val listener: RecyclerProductItemListener) :
     RecyclerView.Adapter<ProductItemListAdapter.ProductItemViewHolder>() {
 
     private val productsListDiffer = AsyncListDiffer(this, DIFF_CALLBACK)
 
-    fun submitList(list: List<ProductItemPlug>) = productsListDiffer.submitList(list)
+    fun submitList(list: List<ProductItem>) = productsListDiffer.submitList(list)
 
     inner class ProductItemViewHolder(private val binding: ProductCardRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(productItem: ProductItemPlug) = with(binding) {
+        fun bind(productItem: ProductItem) = with(binding) {
             productItemHeader.text = productItem.title
             productItemDescription.text = productItem.description
-            productOrderButton.text = productItem.price
+            productOrderButton.apply {
+                text = productItem.price
+                setOnClickListener { listener.onOrderBtnClick(productItem) }
+            }
             Glide.with(productItemImage.context)
                 .load(productItem.imageUrl)
                 .placeholder(R.drawable.food_test)
                 .into(productItemImage)
+
+            itemView.setOnClickListener { listener.onItemClick(productItem) }
         }
     }
 
@@ -44,16 +50,16 @@ class ProductItemListAdapter :
     override fun getItemCount(): Int = productsListDiffer.currentList.size
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ProductItemPlug>() {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ProductItem>() {
             override fun areItemsTheSame(
-                oldItem: ProductItemPlug,
-                newItem: ProductItemPlug
+                oldItem: ProductItem,
+                newItem: ProductItem
             ): Boolean =
                 oldItem.id == newItem.id
 
             override fun areContentsTheSame(
-                oldItem: ProductItemPlug,
-                newItem: ProductItemPlug
+                oldItem: ProductItem,
+                newItem: ProductItem
             ): Boolean =
                 oldItem == newItem
         }

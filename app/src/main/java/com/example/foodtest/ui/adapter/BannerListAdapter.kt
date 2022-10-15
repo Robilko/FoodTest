@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodtest.R
 import com.example.foodtest.databinding.BannerRecycleItemBinding
+import com.example.foodtest.ui.adapter.listeners.BannerListListener
 import com.example.foodtest.ui.model.BannerPlug
 
-class BannerListAdapter : RecyclerView.Adapter<BannerListAdapter.BannerViewHolder>() {
+class BannerListAdapter(private val listener: BannerListListener) :
+    RecyclerView.Adapter<BannerListAdapter.BannerViewHolder>() {
 
     private val bannersListDiffer = AsyncListDiffer(this, DIFF_CALLBACK)
 
@@ -22,6 +24,8 @@ class BannerListAdapter : RecyclerView.Adapter<BannerListAdapter.BannerViewHolde
             Glide.with(bannerImage.context)
                 .load(R.drawable.example_banner)
                 .into(bannerImage)
+
+            itemView.setOnClickListener { listener.onItemClick(bannerItem) }
         }
     }
 

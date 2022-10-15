@@ -37,7 +37,7 @@
                     android:id="@+id/main_menu_select_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/example_current_city"
+                    android:text="@string/main_menu_current_city"
                     android:textColor="?attr/colorOnPrimary"
                     android:textStyle="bold"
                     app:drawableRightCompat="@drawable/ic_arrow_down_24"
@@ -60,7 +60,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        layout="@layout/product_category_chips_layout"
+        android:id="@+id/chips_group"
+        layout="@layout/category_buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -78,5 +79,25 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:itemCount="5"
         tools:listitem="@layout/product_card_recycler_item" />
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/emptyProductListImage"
+        style="@style/NoContentImage"
+        android:src="@drawable/ic_empty_products_24"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/error"
+        style="@style/NoContentImage"
+        android:src="@drawable/ic_error_24"
+        tools:visibility="visible" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

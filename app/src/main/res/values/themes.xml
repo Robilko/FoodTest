@@ -21,13 +21,12 @@
         <item name="android:layout_margin">@dimen/margin_8</item>
     </style>
 
-    <style name="ChipStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="chipCornerRadius">4dp</item>
-        <item name="android:padding">@dimen/margin_4</item>
-        <item name="android:textColor">?attr/colorPrimaryVariant</item>
-        <item name="android:backgroundTint">@color/chipBackground</item>
+    <style name="NoContentImage">
+        <item name="android:layout_width">@dimen/main_menu_empty_list_image_size</item>
+        <item name="android:layout_height">@dimen/main_menu_empty_list_image_size</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:visibility">gone</item>
+        <item name="tint">?attr/colorPrimaryVariant</item>
     </style>
 
 </resources>

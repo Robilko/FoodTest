@@ -11,6 +11,7 @@
     <color name="appPrimary">#E81848</color>
     <color name="appPrimaryVariant">#B83737</color>
     <color name="appBarBackground">#FFFFFFFF</color>
-    <color name="chipBackground">#E49D9D</color>
+    <color name="cat_btn_background">#E49D9D</color>
+    <color name="chipSelectedBackground">#EFB9B9</color>
 
 </resources>
