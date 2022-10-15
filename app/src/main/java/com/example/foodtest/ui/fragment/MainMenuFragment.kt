@@ -1,5 +1,7 @@
 package com.example.foodtest.ui.fragment
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,7 @@ import com.example.foodtest.ui.model.BannerPlug
 import com.example.foodtest.ui.model.ListViewState
 import com.example.foodtest.ui.model.ProductItem
 import com.example.foodtest.ui.viewmodel.MainMenuViewModel
+import com.example.foodtest.utils.network.OnlineLiveData
 import com.example.foodtest.utils.ui.Category
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,10 +30,12 @@ class MainMenuFragment : Fragment() {
     private val viewModel by viewModel<MainMenuViewModel>()
     private var _binding: FragmentMainMenuBinding? = null
     private val binding get() = _binding!!
+    private var isNetworkAvailable: Boolean = true
+
 
     private val categoryBtnListener = object : CategoryBtnListListener {
         override fun onClick(category: Category) {
-            viewModel.getDataByCategory(category)
+            viewModel.getDataByCategory(category, isNetworkAvailable)
         }
     }
     private val categoryBtnAdapter: CategoryButtonListAdapter =
@@ -54,6 +59,22 @@ class MainMenuFragment : Fragment() {
     }
     private val productAdapter: ProductItemListAdapter =
         ProductItemListAdapter(listener = recyclerProductItemListener)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        subscribeToNetworkChange()
+    }
+
+    private fun subscribeToNetworkChange() {
+        isNetworkAvailable =
+            (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected == true
+        if (!isNetworkAvailable) showToastMessage(getString(R.string.network_connecion_not_available))
+
+        OnlineLiveData(requireContext()).observe(this) { isAvailable ->
+            isNetworkAvailable = isAvailable
+            if (!isNetworkAvailable) showToastMessage(getString(R.string.network_connecion_not_available))
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -85,7 +106,7 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun initData() {
-        viewModel.getDataFromRemote(Category.BURGERS)
+        viewModel.getData(Category.BURGERS, isNetworkAvailable)
     }
 
     private fun initView() = with(binding) {

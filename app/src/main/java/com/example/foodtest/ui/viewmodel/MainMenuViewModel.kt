@@ -11,36 +11,70 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MainMenuViewModel(private val useCase: GetProductsUseCase) : ViewModel() {
+class MainMenuViewModel(private val useCases: GetProductsUseCase) : ViewModel() {
 
     private val _viewState = MutableStateFlow<ListViewState>(ListViewState.Loading)
     val viewState: StateFlow<ListViewState> = _viewState.asStateFlow()
 
     private val products = mutableListOf<ProductItem>()
 
+    fun getData(category: Category, isNetworkAvailable: Boolean) {
+        if (isNetworkAvailable) {
+            getDataFromRemote(category)
+        } else {
+            getDataFromCacheDb(category)
+        }
+    }
 
-    fun getDataFromRemote(category: Category) {
+    private fun getDataFromRemote(category: Category) {
         viewModelScope.launch {
-            useCase.getProductList(category = category)
-                .onSuccess {
-                    if (it.isEmpty()) {
+            useCases.getProductListFromRemote(category = category)
+                .onSuccess { productItemList ->
+                    if (productItemList.isEmpty()) {
                         _viewState.value = ListViewState.Empty
                     } else {
-                        products += it
-                        _viewState.value = ListViewState.Data(data = it)
+                        products += productItemList
+                        useCases.addProductListToDb(productItemList)
+                        _viewState.value = ListViewState.Data(data = productItemList)
                     }
                 }
                 .onFailure { _viewState.value = ListViewState.Error(message = it.message) }
         }
     }
 
-    fun getDataByCategory(category: Category) {
+    private fun getDataFromCacheDb(category: Category) {
+        viewModelScope.launch {
+            useCases.getProductListFromLocalDB(category)
+                .onSuccess { productItemList ->
+                    if (productItemList.isEmpty()) {
+                        _viewState.value = ListViewState.Empty
+                    } else{
+                        products.addAll(productItemList)
+                        getDataByCategory(category, false)
+                    }
+                }
+                .onFailure { error ->
+                    _viewState.value = ListViewState.Error(message = error.message)
+                }
+        }
+    }
+
+    fun getDataByCategory(category: Category, isNetworkAvailable: Boolean) {
         _viewState.value = ListViewState.Loading
         val filteredByCategory = products.filter { it.category == category }
         if (filteredByCategory.isEmpty()) {
-            getDataFromRemote(category)
+            if(isNetworkAvailable) {
+                getDataFromRemote(category)
+            } else {
+                _viewState.value = ListViewState.Empty
+            }
         } else {
             _viewState.value = ListViewState.Data(data = filteredByCategory)
         }
+    }
+
+//    Not currently used, but will be needed to implement conditional cache flushing.
+    fun clearProductCache() {
+        viewModelScope.launch { useCases.clearProductsFromCache() }
     }
 }

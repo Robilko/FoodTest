@@ -17,5 +17,5 @@ data class ProductDTO(
     @SerializedName("rate")
     val rate: Double,
     @SerializedName("country")
-    val country: String,
+    val country: String
 )

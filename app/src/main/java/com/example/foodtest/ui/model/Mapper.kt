@@ -1,6 +1,7 @@
 package com.example.foodtest.ui.model
 
 import com.example.foodtest.data.api.model.ProductDTO
+import com.example.foodtest.data.db.entity.ProductEntity
 import com.example.foodtest.utils.ui.Category
 
 object ProductDtoToUiMapper {
@@ -15,6 +16,40 @@ object ProductDtoToUiMapper {
                 title = productDTO.name,
                 description = productDTO.dsc,
                 category = category
+            )
+        }
+    }
+}
+
+object ProductItemToDbMapper {
+    operator fun invoke(
+        productList: List<ProductItem>
+    ) : List<ProductEntity> {
+        return productList.map { productItem ->
+            ProductEntity(
+                id = productItem.id,
+                imageUrl = productItem.imageUrl,
+                price = productItem.price,
+                title = productItem.title,
+                description = productItem.description,
+                category = productItem.category
+            )
+        }
+    }
+}
+
+object ProductEntityToUiMapper {
+    operator fun invoke(
+        productList: List<ProductEntity>
+    ) : List<ProductItem> {
+        return productList.map { productItem ->
+            ProductItem(
+                id = productItem.id,
+                imageUrl = productItem.imageUrl,
+                price = productItem.price,
+                title = productItem.title,
+                description = productItem.description,
+                category = productItem.category
             )
         }
     }

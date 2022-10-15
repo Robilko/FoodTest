@@ -23,4 +23,5 @@
     <string name="category_name_sandwiches">Sandwiches</string>
     <string name="category_name_desserts">Desserts</string>
     <string name="category_name_drinks">Drinks</string>
+    <string name="network_connecion_not_available">Network connecion not available now !</string>
 </resources>
