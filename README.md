@@ -12,7 +12,6 @@ API - https://ig-food-menus.herokuapp.com/
 -Koin
 -Glide
 -Navigation controller
---------------------------
 
 https://user-images.githubusercontent.com/75025794/195991112-abd8f2e5-81c3-4be5-ab8c-6e64b33677f8.mp4
 
